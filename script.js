@@ -2,93 +2,63 @@ document.getElementById("weatherForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const city = document.getElementById("city").value;
-    const date = document.getElementById("date").value;
     const unit = document.getElementById("unit").value; // Get selected unit (Celsius or Fahrenheit)
     const apiKey = config.API_KEY;
 
-    if (date) {
-        // Date input provided - fetch historical weather data
-        const unixTimestamp = new Date(date).getTime() / 1000; // Convert date to UNIX timestamp
+    // OpenWeather 5-day/3-hour forecast API endpoint
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
 
-        // Step 1: Get city coordinates (latitude, longitude) using Geocoding API
-        const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
-
-        fetch(geocodeUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Geocoding API error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(geoData => {
-                if (geoData.length === 0) {
-                    throw new Error("City not found");
-                }
-
-                const { lat, lon } = geoData[0];
-
-                // Step 2: Use One Call API for historical weather data
-                const oneCallUrl = `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${unixTimestamp}&appid=${apiKey}&units=${unit}`;
-
-                return fetch(oneCallUrl);
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`One Call API error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                displayWeatherData(data.current, unit); // Historical data is in 'current'
-            })
-            .catch(error => {
-                console.error("Error fetching weather data:", error);
-                document.getElementById("weatherResult").innerHTML = `<p>Error fetching weather data: ${error.message}</p>`;
-            });
-
-    } else {
-        // No date input - fetch current weather data
-        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-
-        fetch(currentWeatherUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                displayWeatherData(data, unit);
-            })
-            .catch(error => {
-                console.error("Error fetching weather data:", error);
-                document.getElementById("weatherResult").innerHTML = `<p>Error fetching weather data: ${error.message}</p>`;
-            });
-    }
+    fetch(forecastUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            displayWeatherForecast(data, unit);
+        })
+        .catch(error => {
+            console.error("Error fetching weather data:", error);
+            document.getElementById("weatherResult").innerHTML = `<p>Error fetching weather data: ${error.message}</p>`;
+        });
 });
 
-function displayWeatherData(data, unit) {
+function displayWeatherForecast(data, unit) {
     const weatherDiv = document.getElementById("weatherResult");
     const tempUnit = unit === "metric" ? "°C" : "°F"; // Choose unit symbol based on the selected unit
     const speedUnit = unit === "metric" ? "m/s" : "mph"; // Wind speed unit
 
-    // For current weather data
-    if (data.name) {
-        weatherDiv.innerHTML = `
-            <h2>Weather in ${data.name}</h2>
-            <p>Temperature: ${data.main.temp} ${tempUnit}</p>
-            <p>Humidity: ${data.main.humidity}%</p>
-            <p>Wind Speed: ${data.wind.speed} ${speedUnit}</p>
-            <p>Weather Description: ${data.weather[0].description}</p>
+    let weatherHtml = "<h2>5-Day Weather Forecast</h2>";
+
+    const dailyForecasts = {};
+
+    data.list.forEach(forecast => {
+        const date = new Date(forecast.dt * 1000).toLocaleDateString();
+
+        if (!dailyForecasts[date]) {
+            dailyForecasts[date] = [];
+        }
+
+        dailyForecasts[date].push(forecast);
+    });
+
+    Object.keys(dailyForecasts).forEach(date => {
+        const dayForecasts = dailyForecasts[date];
+        const forecast = dayForecasts[0];
+        const weatherIcon = forecast.weather[0].icon;
+
+        weatherHtml += `
+            <div>
+                <h3>Weather on ${date}</h3>
+                <p><i class="fas fa-thermometer-half"></i> Temperature: ${forecast.main.temp} ${tempUnit}</p>
+                <p><i class="fas fa-tint"></i> Humidity: ${forecast.main.humidity}%</p>
+                <p><i class="fas fa-wind"></i> Wind Speed: ${forecast.wind.speed} ${speedUnit}</p>
+                <p><i class="fas fa-cloud-sun"></i> Weather Description: ${forecast.weather[0].description}</p>
+                <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather Icon">
+            </div>
         `;
-    } else {
-        // For historical weather data
-        weatherDiv.innerHTML = `
-            <h2>Weather Data on Selected Date</h2>
-            <p>Temperature: ${data.temp} ${tempUnit}</p>
-            <p>Humidity: ${data.humidity}%</p>
-            <p>Wind Speed: ${data.wind_speed} ${speedUnit}</p>
-            <p>Weather Description: ${data.weather[0].description}</p>
-        `;
-    }
+    });
+
+    weatherDiv.innerHTML = weatherHtml;
 }
