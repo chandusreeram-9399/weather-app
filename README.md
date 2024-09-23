@@ -35,7 +35,12 @@ The Weather App is a simple web application that allows users to check the weath
 4. **Run the Application**:
    - Open `index.html` in your web browser directly, or use a local server (like the Live Server extension in VS Code) to run the application.
    - If using a local server, navigate to the appropriate URL (e.g., `http://localhost:5500/index.html`).
-
+   - 
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
+- **Web Browser**: A modern web browser (e.g., Chrome, Firefox, Edge) installed on your computer.
+- **Internet Connection**: Required to fetch weather data from the OpenWeather API.
+- 
 ## Usage
 - Enter the name of the city in the input field.
 - Select the temperature unit (Celsius or Fahrenheit).
