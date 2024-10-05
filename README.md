@@ -26,7 +26,7 @@ This is a web application that allows users to check the 5-day weather forecast 
 
 2. **Navigate to the project directory:**
    ```
-   cd city-weather-checker
+   cd weather-checker
    ```
 
 3. **API Key:**
@@ -34,7 +34,7 @@ This is a web application that allows users to check the 5-day weather forecast 
    * Replace the placeholder API key in the `config.js` file:
      ```javascript
      
-         API_KEY: '9a518d458c06ba74aa823051c4bbfe3d',
+         API_KEY: '9a518d458c06ba74aa823051c4bbfe3d'
      
      ```
 
@@ -54,10 +54,13 @@ This is a web application that allows users to check the 5-day weather forecast 
 * **Responsive Design**: The CSS is designed to be responsive, adapting to different screen sizes.
 
 ## Screenshots
-(Note: Add actual screenshots of your application here)
-* **Screenshot 1**: Main interface of the City Weather Checker.
-* **Screenshot 2**: Example of a 5-day weather forecast display.
 
+## Screenshots
+![Main Interface](images/main-interface.png)
+*Main interface of the City Weather Checker*
+
+![Weather Forecast](images/weather-forecast.png)
+*Example of a 5-day weather forecast display*
 ## API Reference
 * **OpenWeather API**:
   * **5-day/3-hour Forecast Endpoint**: 
