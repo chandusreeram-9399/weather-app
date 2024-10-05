@@ -25,13 +25,12 @@ This is a weather application that allows users to check the 5-day weather forec
 ## Setup and Run Instructions
 
 ### 1.Clone the repository:
-
+```bash
 git clone https://github.com/chandusreeram-9399/weather-app.git
+```
 
-### 1.Clone the repository:
-bash
-Copy code
-cd weather-app
+### 2.Navigate to the project directory:
+-cd weather-app
 API Key:
 Obtain an API key from OpenWeather.
 Replace the placeholder variable in public/config.js with your own API key:
