@@ -60,7 +60,7 @@ This is a web application that allows users to check the 5-day weather forecast 
 *Main interface of the City Weather Checker*
 
 ![Weather Forecast](images/weather-forecast.png)
-*Example of a 5-day weather forecast display*
+*Example of a 5-day weather forecast display and Shows the Responsiveness based on screen size*
 ## API Reference
 * **OpenWeather API**:
   * **5-day/3-hour Forecast Endpoint**: 
