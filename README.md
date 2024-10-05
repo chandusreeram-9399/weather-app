@@ -26,7 +26,7 @@ This is a web application that allows users to check the 5-day weather forecast 
 
 2. **Navigate to the project directory:**
    ```
-   cd weather-checker
+   cd weather-app
    ```
 
 3. **API Key:**
@@ -56,10 +56,10 @@ This is a web application that allows users to check the 5-day weather forecast 
 ## Screenshots
 
 ## Screenshots
-![Main Interface](images/main-interface.png)
+![Main Interface](main-interface.png)
 *Main interface of the City Weather Checker*
 
-![Weather Forecast](images/weather-forecast.png)
+![Weather Forecast](weather-forecast.png)
 *Example of a 5-day weather forecast display and Shows the Responsiveness based on screen size*
 ## API Reference
 * **OpenWeather API**:
