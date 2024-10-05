@@ -36,10 +36,22 @@ cd weather-app
 
 ```
 
-### API Key:
-1. **Obtain an API key from OpenWeather**:
+### 3.API Key:
+i. **Obtain an API key from OpenWeather**:
    - Visit [OpenWeather](https://openweathermap.org/api) to sign up and get your API key.
 
-2. **Replace the placeholder variable in `config.js` with your own API key**:
-```javascript
+ii. **Replace the placeholder variable in `config.js` with your own API key**:
+```
 const API_KEY = "9a518d458c06ba74aa823051c4bbfe3d"; // Insert your API key here
+```
+##3.Usage
+
+### Feature 1: Viewing the 5-Day Weather Forecast
+1. **Enter a city name in the input field**: Type the name of the city for which you want to see the weather.
+2. **Select the temperature unit (Celsius or Fahrenheit)**: Choose your preferred temperature unit from the dropdown menu.
+3. **Click the "Get Weather" button**: Press the button to retrieve and display the 5-day weather forecast for the entered city.
+
+### Interaction:
+- The user interacts with the app through the input form. The result section updates dynamically based on the input.
+- If the city is invalid or the API request fails, an appropriate error message will be displayed.
+
