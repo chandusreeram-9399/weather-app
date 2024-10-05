@@ -30,8 +30,12 @@ git clone https://github.com/chandusreeram-9399/weather-app.git
 ```
 
 ### 2.Navigate to the project directory:
--cd weather-app
-API Key:
+```
+cd weather-app
+
+```
+-This command changes the current working directory to the cloned weather-app directory.
+### 3.API Key:
 Obtain an API key from OpenWeather.
 Replace the placeholder variable in public/config.js with your own API key:
 js
