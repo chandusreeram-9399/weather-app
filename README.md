@@ -26,4 +26,16 @@ This is a weather application that allows users to check the 5-day weather forec
 
 ### Clone the repository:
 ```bash
-git clone https://github.com/your-username/weather-app.git
+git clone https://github.com/chandusreeram-9399/weather-app.git
+Navigate to the project directory:
+bash
+Copy code
+cd weather-app
+API Key:
+Obtain an API key from OpenWeather.
+Replace the placeholder variable in public/config.js with your own API key:
+js
+Copy code
+const API_KEY = "9a518d458c06ba74aa823051c4bbfe3d";
+Run the application:
+Open the index.html file in a browser to view the application.
