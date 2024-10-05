@@ -56,11 +56,12 @@ This is a web application that allows users to check the 5-day weather forecast 
 ## Screenshots
 
 ## Screenshots
+1.*Main interface of the City Weather Checker*
 ![Main Interface](main-interface.png)
-*Main interface of the City Weather Checker*
 
+2.*Example of a 5-day weather forecast display and Shows the Responsiveness based on screen size*
 ![Weather Forecast](weather-forecast.png)
-*Example of a 5-day weather forecast display and Shows the Responsiveness based on screen size*
+
 ## API Reference
 * **OpenWeather API**:
   * **5-day/3-hour Forecast Endpoint**: 
