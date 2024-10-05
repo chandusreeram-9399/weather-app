@@ -24,10 +24,11 @@ This is a weather application that allows users to check the 5-day weather forec
 
 ## Setup and Run Instructions
 
-### Clone the repository:
-```bash
+### 1.Clone the repository:
+
 git clone https://github.com/chandusreeram-9399/weather-app.git
-Navigate to the project directory:
+
+### 1.Clone the repository:
 bash
 Copy code
 cd weather-app
