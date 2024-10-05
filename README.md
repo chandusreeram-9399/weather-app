@@ -36,11 +36,10 @@ cd weather-app
 
 ```
 
-### 3.API Key:
--Obtain an API key from OpenWeather.
--Replace the placeholder variable in public/config.js with your own API key:
-```
-const API_KEY = "9a518d458c06ba74aa823051c4bbfe3d";
-```
-###Run the application:
-Open the index.html file in a browser to view the application.
+### API Key:
+1. **Obtain an API key from OpenWeather**:
+   - Visit [OpenWeather](https://openweathermap.org/api) to sign up and get your API key.
+
+2. **Replace the placeholder variable in `config.js` with your own API key**:
+```javascript
+const API_KEY = "9a518d458c06ba74aa823051c4bbfe3d"; // Insert your API key here
